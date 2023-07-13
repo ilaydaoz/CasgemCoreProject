@@ -31,5 +31,12 @@ namespace Pizzapan.PrensentationLayer.Controllers
             _categoryService.TInsert(category);
             return RedirectToAction("Index");
         }
+        public IActionResult DeleteCategory(int id)
+        {
+           var value = _categoryService.TGetByID(id);
+            _categoryService.TDelete(value);    
+            return RedirectToAction("Index");
+        }
+
     }
 }

@@ -1,0 +1,15 @@
+﻿@model Pizzapan.EntityLayer.Concrete.Category
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kategory ekleme sayfası </h1>
+
+<form method="post">
+    <label>kategori adı</label>
+    <input asp-for="CategoryName" class="form-control" style="background-color:gray" />
+    <br/>
+    <button class="btn btn-info">kayder</button>
+
+</form>
