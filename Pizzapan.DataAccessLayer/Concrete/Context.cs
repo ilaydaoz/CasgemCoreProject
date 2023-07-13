@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pizzapan.EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pizzapan.DataAccessLayer.Concrete
 {
@@ -12,7 +7,7 @@ namespace Pizzapan.DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-AKOHCIC;initial catalog=CasgemDbPizzaPan;;initegrated security=true");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-AKOHCIC;initial catalog=CasgemDbPizzaPan;integrated security=true");
         }
        public DbSet<Category> Categories   { get; set; }
        public DbSet<Contact> Contacts { get; set; }
