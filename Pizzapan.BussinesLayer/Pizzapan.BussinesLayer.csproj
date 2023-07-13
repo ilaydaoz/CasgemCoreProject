@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Concrete\" />
-    <Folder Include="Absrtact\" />
     <Folder Include="Extentions\" />
     <Folder Include="Logging\" />
     <Folder Include="Messages\" />
