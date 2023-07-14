@@ -1,4 +1,5 @@
 ﻿using Pizzapan.BussinesLayer.Absrtact;
+using Pizzapan.DataAccessLayer.Abstract;
 using Pizzapan.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,35 @@ namespace Pizzapan.BussinesLayer.Concrete
 {
     public class TestimoialManager : ITestimoialService
     {
+        private readonly ITestimoialDal _testimoialDal;
+        public TestimoialManager(ITestimoialDal testimoialDal)
+        {
+            _testimoialDal = testimoialDal;
+        }
+
         public void TDelete(Testimoial t)
         {
-            throw new NotImplementedException();
+            _testimoialDal.Delete(t);
         }
 
         public Testimoial TGetByID(int id)
         {
-            throw new NotImplementedException();
+            return _testimoialDal.GetByID(id);
         }
 
         public List<Testimoial> TGetList()
         {
-            throw new NotImplementedException();
+            return _testimoialDal.GetList();
         }
 
         public void TInsert(Testimoial t)
         {
-            throw new NotImplementedException();
+            _testimoialDal.Insert(t);
         }
 
         public void TUpdate(Testimoial t)
         {
-            throw new NotImplementedException();
+            _testimoialDal.Update(t);
         }
     }
 }

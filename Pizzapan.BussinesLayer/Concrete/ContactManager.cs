@@ -1,4 +1,5 @@
 ﻿using Pizzapan.BussinesLayer.Absrtact;
+using Pizzapan.DataAccessLayer.Abstract;
 using Pizzapan.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,35 @@ namespace Pizzapan.BussinesLayer.Concrete
 {
     public class ContactManager : IContactService
     {
+        private readonly IContactDal _contactDal;
+        public ContactManager(IContactDal contactDal)
+        {
+            _contactDal = contactDal;
+        }
+
         public void TDelete(Contact t)
         {
-            throw new NotImplementedException();
+            _contactDal.Delete(t);
         }
 
         public Contact TGetByID(int id)
         {
-            throw new NotImplementedException();
+            return _contactDal.GetByID(id);
         }
 
         public List<Contact> TGetList()
         {
-            throw new NotImplementedException();
+            return _contactDal.GetList();
         }
 
         public void TInsert(Contact t)
         {
-            throw new NotImplementedException();
+            _contactDal.Insert(t);
         }
 
         public void TUpdate(Contact t)
         {
-            throw new NotImplementedException();
+            _contactDal.Update(t);
         }
     }
 }
