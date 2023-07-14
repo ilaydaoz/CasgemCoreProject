@@ -45,10 +45,16 @@ namespace Pizzapan.PrensentationLayer.Controllers
             return View(value);
 
         }
-        public IActionResult UpdateContact(Contact contact)
+        ////public IActionResult UpdateContact(Contact contact)
+        //{
+        //    _contactService.TUpdate(contact);
+        //    return RedirectToAction("Index");
+        //}
+        public IActionResult GetMessageByTesekur()
         {
-            _contactService.TUpdate(contact);
-            return RedirectToAction("Index");
+            var value = _contactService.TGetContactBySubjectWithTesekkur();
+            return View(value);
+
         }
     }
 }
