@@ -19,9 +19,8 @@ namespace Pizzapan.BussinesLayer.Concrete
 
         public List<Contact> TGetContactBySubjectWithTesekkur()
         {
-           return _contactDal.GetContactBySubjectWithTesekkur();
+            return _contactDal.GetContactBySubjectWithTesekkur();
         }
-
         public void TDelete(Contact t)
         {
             _contactDal.Delete(t);

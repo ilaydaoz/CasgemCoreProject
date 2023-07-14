@@ -10,8 +10,8 @@ using Pizzapan.DataAccessLayer.Concrete;
 namespace Pizzapan.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230713080108_mig_first")]
-    partial class mig_first
+    [Migration("20230714091108_mig_all")]
+    partial class mig_all
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,6 +61,30 @@ namespace Pizzapan.DataAccessLayer.Migrations
                     b.HasKey("ContactID");
 
                     b.ToTable("Contacts");
+                });
+
+            modelBuilder.Entity("Pizzapan.EntityLayer.Concrete.Discount", b =>
+                {
+                    b.Property<int>("DiscountID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DiscountCode")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DiscountCount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndingDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("DiscountID");
+
+                    b.ToTable("Discounts");
                 });
 
             modelBuilder.Entity("Pizzapan.EntityLayer.Concrete.Product", b =>

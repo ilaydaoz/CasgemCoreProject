@@ -47,6 +47,5 @@ namespace Pizzapan.BussinesLayer.Concrete
         {
             _productDal.Update(t);
         }
-
     }
 }

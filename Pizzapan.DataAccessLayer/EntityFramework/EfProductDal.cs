@@ -13,7 +13,7 @@ namespace Pizzapan.DataAccessLayer.EntityFramework
         public List<Product> GetProductsWithCategory()
         {
             using var context = new Context();
-            return context.Products.Include(p => p.Category).ToList();
+            return context.Products.Include(x => x.Category).ToList();
         }
     }
 }
