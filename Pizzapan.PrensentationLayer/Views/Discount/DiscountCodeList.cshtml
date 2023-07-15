@@ -16,7 +16,7 @@
     {
         if(item.EndingDate<DateTime.Now)
         {
-            <tr style="background-color:azure">
+            <tr style="background-color:orange">
             <td>@item.DiscountCode</td>
             <td>@item.DiscountCount</td>
             <td>@(((DateTime)item.EndingDate).ToString("dd-MMM-yyyy"))</td>
@@ -24,7 +24,7 @@
         }
         else
         {
-            <tr style="background-color:antiquewhite">
+            <tr style="background-color:hotpink">
                 <td>@item.DiscountCode</td>
                 <td>@item.DiscountCount</td>
                 <td>@(((DateTime)item.EndingDate).ToString("dd-MMM-yyyy"))</td>
@@ -34,3 +34,4 @@
     }
     
 </table>
+

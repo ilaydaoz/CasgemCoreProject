@@ -3,9 +3,6 @@ using Pizzapan.DataAccessLayer.Abstract;
 using Pizzapan.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pizzapan.BussinesLayer.Concrete
 {
@@ -16,6 +13,7 @@ namespace Pizzapan.BussinesLayer.Concrete
         {
             _discountDal = discountDal;
         }
+
 
         public void TDelete(Discount t)
         {
@@ -37,9 +35,16 @@ namespace Pizzapan.BussinesLayer.Concrete
             _discountDal.Insert(t);
         }
 
+
         public void TUpdate(Discount t)
         {
             throw new NotImplementedException();
+        }
+
+
+        public string TRandomCreateCode()
+        {
+            return _discountDal.RandomCreateCode();
         }
     }
 }

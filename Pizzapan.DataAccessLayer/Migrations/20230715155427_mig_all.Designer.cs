@@ -10,8 +10,8 @@ using Pizzapan.DataAccessLayer.Concrete;
 namespace Pizzapan.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230714120303_mig_add_identity3")]
-    partial class mig_add_identity3
+    [Migration("20230715155427_mig_all")]
+    partial class mig_all
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -279,8 +279,8 @@ namespace Pizzapan.DataAccessLayer.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DiscountCode")
-                        .HasColumnType("int");
+                    b.Property<string>("DiscountCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DiscountCount")
                         .HasColumnType("int");

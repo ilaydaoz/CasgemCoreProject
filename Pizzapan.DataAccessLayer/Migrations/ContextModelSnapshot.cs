@@ -277,8 +277,8 @@ namespace Pizzapan.DataAccessLayer.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DiscountCode")
-                        .HasColumnType("int");
+                    b.Property<string>("DiscountCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DiscountCount")
                         .HasColumnType("int");
