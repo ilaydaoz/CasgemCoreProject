@@ -20,28 +20,44 @@ namespace Pizzapan.PrensentationLayer.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Index(RegisterViewModel model)
         {
-
-            if (ModelState.IsValid)
+            AppUser appUser = new AppUser()
             {
-                AppUser appUser = new AppUser()
-                {
-                    Name = model.Name,
-                    Surname = model.SurName,
-                    Email = model.Email,
-                    UserName = model.UserName
-                };
-                await _userManager.CreateAsync(appUser, model.Passrword);
-                return RedirectToAction("Index", "Login");
-            }
+                Name = model.Name,
+                Surname = model.SurName,
+                Email = model.Email,
+                UserName = model.UserName
+            };
 
+            if (model.Passrword == model.ConfimPassrword)
+            {
+
+
+                var result = await _userManager.CreateAsync(appUser, model.Passrword);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Login");
+
+                }
+
+                else
+                {
+
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+                }
+            }
             else
             {
-                return View();
+                ModelState.AddModelError("", "şifeler eşleşmiyor");
             }
+            return View();
         }
     }
-}
+    }
+
