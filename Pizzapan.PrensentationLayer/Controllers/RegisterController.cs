@@ -44,24 +44,7 @@ namespace Pizzapan.PrensentationLayer.Controllers
                 if (result.Succeeded)
                 {
                     #region
-                    MimeMessage mimeMessage = new MimeMessage();
-                    MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "ilaydaozken@gmail.com");
-                    mimeMessage.From.Add(mailboxAddressFrom);
-
-                    MailboxAddress mailboxAddressTo = new MailboxAddress("User", model.Email);
-                    mimeMessage.To.Add(mailboxAddressTo);
-
-                    var bodyBuilder = new BodyBuilder();
-                    bodyBuilder.TextBody = "GİRİŞYAPABİLMEK İÇİN ONAYLAMA KODUNUZ:" + x;
-                    mimeMessage.Body = bodyBuilder.ToMessageBody();
-
-                    mimeMessage.Subject = "DOĞRULMA KODU";
-
-                    SmtpClient smtpClient = new SmtpClient();
-                    smtpClient.Connect("smtp.gmail.com", 587, false);
-                    smtpClient.Authenticate("ilaydaozken@gmail.com", "ebntuohpiykoirpp");
-                    smtpClient.Send(mimeMessage);
-                    smtpClient.Disconnect(true);
+                    SendMail(model, x);
 
                     #endregion
                     TempData["Username"] = appUser.UserName;
@@ -83,6 +66,28 @@ namespace Pizzapan.PrensentationLayer.Controllers
                 ModelState.AddModelError("", "şifeler eşleşmiyor");
             }
             return View();
+        }
+
+        private static void SendMail(RegisterViewModel model, int x)
+        {
+            MimeMessage mimeMessage = new MimeMessage();
+            MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "ilaydaozken@gmail.com");
+            mimeMessage.From.Add(mailboxAddressFrom);
+
+            MailboxAddress mailboxAddressTo = new MailboxAddress("User", model.Email);
+            mimeMessage.To.Add(mailboxAddressTo);
+
+            var bodyBuilder = new BodyBuilder();
+            bodyBuilder.TextBody = "GİRİŞYAPABİLMEK İÇİN ONAYLAMA KODUNUZ:" + x;
+            mimeMessage.Body = bodyBuilder.ToMessageBody();
+
+            mimeMessage.Subject = "DOĞRULMA KODU";
+
+            SmtpClient smtpClient = new SmtpClient();
+            smtpClient.Connect("smtp.gmail.com", 587, false);
+            smtpClient.Authenticate("ilaydaozken@gmail.com", "ebntuohpiykoirpp");
+            smtpClient.Send(mimeMessage);
+            smtpClient.Disconnect(true);
         }
     }
 }
