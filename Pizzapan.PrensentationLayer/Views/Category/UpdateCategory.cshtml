@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>kategori güncelleme</h1>
+<h1>Kategori Güncelleme Sayfası</h1>
 
 <form method="post">
-    <input type ="hidden" asp-for="CategoryID" style="background-color:gray"/>
-<br/>
-<button class="btn btn-info">güncelle</button>
+    <input type="hidden" asp-for="CategoryID"/>
+    
+    <input type="text" class="form-control" asp-for="CategoryName" style="background-color:darkgray" />
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
 </form>
-
-
