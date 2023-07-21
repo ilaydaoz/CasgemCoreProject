@@ -13,9 +13,10 @@ namespace Pizzapan.PrensentationLayer.Controllers
         {
             _discountService = discountService;
         }
+        [HttpPost]
         public IActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
 
@@ -34,7 +35,7 @@ namespace Pizzapan.PrensentationLayer.Controllers
             discount.CreateDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             discount.EndingDate = Convert.ToDateTime(DateTime.Now.AddDays(3));
             _discountService.TInsert(discount);
-            return RedirectToAction("Index");
+            return RedirectToAction("Discount", "CreateCode");
         }
 
         public IActionResult DiscountCodeList()

@@ -5,7 +5,7 @@
 }
 
 <h1>İndirim Kodu Listesi</h1>
-
+<form>
 <table class="table table-bordered">
     <tr>
         <th>İndirim Kodu</th>
@@ -29,9 +29,11 @@
                 <td>@item.DiscountCount</td>
                 <td>@(((DateTime)item.EndingDate).ToString("dd-MMM-yyyy"))</td>
             </tr>
-            
+          
         }
     }
     
 </table>
-
+<a href="/Discount/CreateCode/" class="btn btn-outline-primary">kod oluşturma ekranı </a>
+</form>
+ 
