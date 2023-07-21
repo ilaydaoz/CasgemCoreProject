@@ -48,7 +48,7 @@ namespace Pizzapan.PrensentationLayer.Controllers
 
                     #endregion
                     TempData["Username"] = appUser.UserName;
-                    return RedirectToAction("Index", "Login");
+                    return RedirectToAction("Index", "ConfirmEmail");
 
                 }
 

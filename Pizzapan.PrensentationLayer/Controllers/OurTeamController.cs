@@ -34,7 +34,7 @@ namespace Pizzapan.PrensentationLayer.Controllers
             if (result.IsValid)
             {
                 _ourTeamService.TInsert(ourTeam);
-                return RedirectToAction("Index");
+                return RedirectToAction();
             }
             else
             {
