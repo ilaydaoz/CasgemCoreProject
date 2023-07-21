@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pizzapan.BussinesLayer.Absrtact;
 using Pizzapan.EntityLayer.Concrete;
+using System;
 
 namespace Pizzapan.PrensentationLayer.Controllers
 {
@@ -43,7 +44,6 @@ namespace Pizzapan.PrensentationLayer.Controllers
         {
             var value = _contactService.TGetByID(id);
             return View(value);
-
         }
         ////public IActionResult UpdateContact(Contact contact)
         //{
@@ -54,7 +54,19 @@ namespace Pizzapan.PrensentationLayer.Controllers
         {
             var value = _contactService.TGetContactBySubjectWithTesekkur();
             return View(value);
+        }
+        [HttpGet]
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Contact(Contact contact)
+        {
+            contact.SendMessage = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            _contactService.TInsert(contact);
 
+            return RedirectToAction("Index", "Default");
         }
     }
 }
