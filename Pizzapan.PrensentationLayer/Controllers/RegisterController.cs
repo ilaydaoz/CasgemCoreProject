@@ -68,7 +68,7 @@ namespace Pizzapan.PrensentationLayer.Controllers
             return View();
         }
 
-        private static void SendMail(RegisterViewModel model, int x)
+        public static void SendMail(RegisterViewModel model, int x)
         {
             MimeMessage mimeMessage = new MimeMessage();
             MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "ilaydaozken@gmail.com");
@@ -78,14 +78,14 @@ namespace Pizzapan.PrensentationLayer.Controllers
             mimeMessage.To.Add(mailboxAddressTo);
 
             var bodyBuilder = new BodyBuilder();
-            bodyBuilder.TextBody = "GİRİŞYAPABİLMEK İÇİN ONAYLAMA KODUNUZ:" + x;
+            bodyBuilder.TextBody = "Giriş yapabilmek için onaylama kodunuz:" + x;
             mimeMessage.Body = bodyBuilder.ToMessageBody();
 
-            mimeMessage.Subject = "DOĞRULMA KODU";
+            mimeMessage.Subject = "Doğrulama Kodu";
 
             SmtpClient smtpClient = new SmtpClient();
             smtpClient.Connect("smtp.gmail.com", 587, false);
-            smtpClient.Authenticate("ilaydaozken@gmail.com", "ebntuohpiykoirpp");
+            smtpClient.Authenticate("ilaydaozken@gmail.com", "inexoosmjsukorli");
             smtpClient.Send(mimeMessage);
             smtpClient.Disconnect(true);
         }

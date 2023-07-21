@@ -13,6 +13,9 @@ namespace Pizzapan.EntityLayer.Concrete
         public string Subject { get; set; }
         public string Email { get; set; }
         public string Message { get; set; }
+        public string Address { get; set; }
+        public string Number { get; set; }
+        public string OpeningHours { get; set; }
         public DateTime SendMessage { get; set; }
     }
 }
