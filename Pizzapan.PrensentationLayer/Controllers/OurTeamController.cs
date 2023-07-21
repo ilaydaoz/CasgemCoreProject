@@ -4,8 +4,7 @@ using Pizzapan.BussinesLayer.Absrtact;
 using Pizzapan.BussinesLayer.ValidationsRules.OurTeamsValidator;
 using Pizzapan.EntityLayer.Concrete;
 
-
-namespace Pizzapan.PrensentationLayer.Controllers
+namespace PizzapanPresentationLayer.Controllers
 {
     public class OurTeamController : Controller
     {
@@ -18,18 +17,20 @@ namespace Pizzapan.PrensentationLayer.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var values = _ourTeamService.TGetList();
+            return View(values);
         }
+
         [HttpGet]
         public IActionResult AddOurTeam()
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult AddOurTeam(OurTeam ourTeam)
         {
             CreateOurTeamValidator createOurTeamValidator = new CreateOurTeamValidator();
-
             ValidationResult result = createOurTeamValidator.Validate(ourTeam);
             if (result.IsValid)
             {
@@ -38,12 +39,32 @@ namespace Pizzapan.PrensentationLayer.Controllers
             }
             else
             {
-                foreach(var item in result.Errors)
+                foreach (var item in result.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
             return View();
+        }
+
+
+        public IActionResult DeleteOurTeam(int id)
+        {
+            var value = _ourTeamService.TGetByID(id);
+            _ourTeamService.TDelete(value);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult UpdateOurTeam(int id)
+        {
+            var value = _ourTeamService.TGetByID(id);
+            return View(value);
+        }
+        [HttpPost]
+        public IActionResult UpdateOurTeam(OurTeam ourTeam)
+        {
+            _ourTeamService.TUpdate(ourTeam);
+            return RedirectToAction("Index");
         }
     }
 }
