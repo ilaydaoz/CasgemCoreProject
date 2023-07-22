@@ -35,7 +35,7 @@ namespace Pizzapan.PrensentationLayer.Controllers
             discount.CreateDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             discount.EndingDate = Convert.ToDateTime(DateTime.Now.AddDays(3));
             _discountService.TInsert(discount);
-            return RedirectToAction("Discount", "CreateCode");
+            return RedirectToAction("DiscountCodeList");
         }
 
         public IActionResult DiscountCodeList()
